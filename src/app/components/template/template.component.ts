@@ -8,6 +8,7 @@ import { NgForm } from '@angular/forms';
     .ng-invalid.ng-touched:not(Form) {
       border: 2px solid red;
     }
+    
   `]
 })
 export class TemplateComponent {
@@ -15,8 +16,23 @@ export class TemplateComponent {
   usuario:any = {
     nombre: null,
     apellido: null,
-    correo: null
+    correo: null,
+    pais: '',
+    sexo: '',
+    aceptar: false
   }
+
+  paises = [{
+    codigo:'VZLA',
+    nombrePais:'Venezuela'
+  },
+  {
+   codigo:'COL',
+   nombrePais:'Colombia' 
+  }]
+
+  sexos:string[] = ['Hombre', 'Mujer', 'Sin definir']
+
 
   constructor() { }
 

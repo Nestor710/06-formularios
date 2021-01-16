@@ -35,7 +35,7 @@
                placeholder="Apellido"
                name="apellido"
                [(ngModel)]="usuario.apellido"
-               minlength="5"
+               minlength="3"
                required
                #apellido="ngModel">
 
@@ -73,16 +73,66 @@
              </div>
     </div>
   </div>
+  <br>
+  <div class="form-group row">
+    <label class="col-2 col-form-label">Pais</label>
+    <div class="col-md-8">
+      <select [(ngModel)]="usuario.pais"
+      name="pais" 
+      class="form-select">
+        <option value="">Seleccione un pais</option>
+        <option *ngFor="let pais of paises"
+        [value]="pais.codigo">{{ pais.nombrePais }}</option>
+      </select>
+    </div>
+  </div>  
+  <br>
 
-
+  <div  *ngFor="let s of sexos"
+        class="form-check form-check-inline">
+    <input [(ngModel)]="usuario.sexo"
+           name="sexo" 
+           [value]="s" 
+           class="form-check-input"
+           type="radio" 
+           name="flexRadioDefault">
+    <label class="form-check-label" for="flexRadioDefault1">
+      {{ s }}
+    </label>
+  </div>
+<!--   <div class="form-check">
+    <input [(ngModel)]="usuario.sexo"
+           name="sexo"
+           value="Hombre" 
+           class="form-check-input" 
+           type="radio" name="flexRadioDefault" 
+           >
+    <label class="form-check-label" for="flexRadioDefault2">
+      Hombre
+    </label>
+  </div> -->
+<hr>
+  <div class="form-check" >
+    <input [(ngModel)]="usuario.aceptar"
+           name="aceptar" 
+           class="form-check-input"
+           type="checkbox" 
+           value="" 
+           required>
+    <label class="form-check-label" for="flexCheckDefault">
+      Acepto los Términos y condiciones
+    </label>
+  </div>
+<hr>
 
   <div class="form-group row">
 
     <label class="col-2 col-form-label">&nbsp;</label>
-
     <div class="input-group col-md-8">
+      
       <button [disabled]="!forma.valid"
               type="submit" 
+              id="b"
               class="btn btn-outline-success">
         Guardar
       </button>
@@ -91,3 +141,10 @@
   </div>
 
 </form>
+
+
+<pre>
+
+  {{ usuario | json }}
+
+</pre>
