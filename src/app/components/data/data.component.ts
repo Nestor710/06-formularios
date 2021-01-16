@@ -34,7 +34,7 @@ export class DataComponent {
       ]),
       'username': new FormControl('', Validators.required, this.ExisteUsuario),
       'password1': new FormControl('', Validators.required),
-      'password2': new FormControl()                                   
+      'password2': new FormControl('', Validators.required)                                   
     })
 
     this.forma.controls['password2'].setValidators([
@@ -53,7 +53,7 @@ export class DataComponent {
   }
 
   agregarPasatiempo(){
-    (<FormArray>this.forma.controls['pasatiempos']).push(
+    (<FormArray>this.forma.get('pasatiempos')['controls']).push(
       new FormControl('Dormir', Validators.required)
     )
   }

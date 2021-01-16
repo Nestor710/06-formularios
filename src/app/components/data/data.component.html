@@ -74,11 +74,18 @@
         [formControlName]="i" 
         type="text" 
         class="form-control">
+        <div>
         <button (click)="agregarPasatiempo()" 
             type="button" 
             class="btn btn-primary">
             Nuevo
         </button>
+<!--         <button (click)="quitarPasatiempo()"
+        type="button"
+        class="btn btn-danger">
+        Quitar
+        </button> -->
+      </div>
     </div>
 </div>
 <br>
@@ -91,6 +98,10 @@
            type="text"
            placeholder="Usuario"
            formControlName="username">
+           <div *ngIf="forma.controls['username'].errors?.required" 
+           class="form-control-feedback">
+            Este campo es obligatorio.
+           </div>
   </div>
 </div>
 
@@ -104,6 +115,10 @@
            type="password"
            placeholder="Password"
            formControlName="password1">
+          <div *ngIf="forma.controls['password1'].errors?.required" 
+           class="form-control-feedback">
+          Este campo es obligatorio.
+           </div>
   </div>
 </div>
 <br>
@@ -115,6 +130,14 @@
            type="password"
            placeholder="Repetir contraseña"
            formControlName="password2">
+           <div *ngIf="forma.controls['password2'].errors?.required" 
+           class="form-control-feedback">
+          Si no completa este campo no tendra acceso.
+           </div>
+           <div *ngIf="forma.controls['password2'].errors?.noiguales" 
+           class="form-control-feedback">
+          No coincide con la contraseña. 
+           </div>
   </div>
 </div>
 
